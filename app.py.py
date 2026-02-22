@@ -12,10 +12,10 @@ from datetime import datetime
 def load_questions():
     # Update this filename if you change the JSON file name again!
     try:
-        with open('2025.json', 'r', encoding='utf-8') as f:
+        with open('exam_formatted_game', 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
-        st.error("Error: '2025.json' not found.")
+        st.error("Error: 'exam_formatted_game' not found.")
         return []
 
 def generate_save_code():
@@ -370,3 +370,4 @@ elif st.session_state.quiz_finished:
                         st.markdown(f"{key}: {val}")
                         
                 st.info(f"**Rationale:** {q['rationale']}")
+
