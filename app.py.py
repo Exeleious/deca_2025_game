@@ -96,12 +96,13 @@ if not st.session_state.game_active and not st.session_state.quiz_finished:
         with col_set1:
             shuffle_opt = st.checkbox("Randomize Order", value=True)
             sim_mode = st.checkbox("DECA Simulation Mode", value=False, help="No immediate feedback. Review all answers at the end of the exam.")
-        with col_set2:
+       with col_set2:
             max_qs = len(raw_questions)
-            # Failsafe in case JSON hasn't loaded properly
-            if max_qs == 0: max_qs = 1 
+            if max_qs == 0:
+                st.warning("No questions found. Please check your JSON file.")
+                st.stop() # This safely stops the app from crashing the slider!
+            
             q_limit = st.slider("Question Count", 1, max_qs, min(100, max_qs))
-
     col1, col2 = st.columns(2)
     
     # START BUTTON
@@ -370,4 +371,5 @@ elif st.session_state.quiz_finished:
                         st.markdown(f"{key}: {val}")
                         
                 st.info(f"**Rationale:** {q['rationale']}")
+
 
