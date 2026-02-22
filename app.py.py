@@ -96,7 +96,7 @@ if not st.session_state.game_active and not st.session_state.quiz_finished:
         with col_set1:
             shuffle_opt = st.checkbox("Randomize Order", value=True)
             sim_mode = st.checkbox("DECA Simulation Mode", value=False, help="No immediate feedback. Review all answers at the end of the exam.")
-       with col_set2:
+        with col_set2:
             max_qs = len(raw_questions)
             if max_qs == 0:
                 st.warning("No questions found. Please check your JSON file.")
@@ -370,6 +370,7 @@ elif st.session_state.quiz_finished:
                         st.markdown(f"{key}: {val}")
                         
                 st.info(f"**Rationale:** {q['rationale']}")
+
 
 
 
